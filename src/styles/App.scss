@@ -130,7 +130,6 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -139,6 +138,13 @@
   transform: translateY(-100%);
   transition: transform 0.3s ease;
   z-index: 100;
+  background: var(--card);
+  a {
+    color: var(--nav-text);
+    &:hover {
+      color: var(--logo-color);
+    }
+  }
 
   &.open {
     transform: translateY(0);
@@ -152,5 +158,58 @@
   }
   .hamburger {
     display: block; /* Show hamburger */
+  }
+  .hamburger span {
+    background: var(--nav-text); // Uses nav text color
+  }
+}
+
+[data-theme="dark"] {
+  --bg: #{$dark-bg};
+  --text: #{$dark-text};
+  --card: #{$dark-card};
+  --nav: #{$dark-nav};
+  --logo-color: #{$logo-dark};
+  --nav-text: #{$nav-text-dark};
+}
+
+// Apply variables
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.navbar {
+  background: var(--nav);
+
+  .nav-logo {
+    color: var(--logo-color); // Now changes with theme
+    font-weight: 700;
+  }
+
+  .nav-links a {
+    color: var(--nav-text); // Applies to all nav links
+    &:hover {
+      color: var(--logo-color); // Uses logo color for hover
+    }
+  }
+}
+
+.project-card,
+.url-form {
+  background: var(--card);
+}
+
+// Theme toggle button
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--text);
   }
 }

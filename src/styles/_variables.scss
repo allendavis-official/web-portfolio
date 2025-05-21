@@ -6,3 +6,31 @@ $light: #f8fafc;
 // Breakpoints
 $mobile: 576px;
 $tablet: 768px;
+
+// Light Theme (default)
+$light-bg: #f8fafc;
+$light-text: #1e293b;
+$light-card: #ffffff;
+$light-nav: #ffffff;
+
+// Dark Theme
+$dark-bg: #0f172a;
+$dark-text: #f8fafc;
+$dark-card: #1e293b;
+$dark-nav: #1e293b;
+
+// Add to your existing variables
+$logo-light: #2563eb; // Vibrant blue (light mode)
+$logo-dark: #60a5fa; // Lighter blue (dark mode)
+$nav-text-light: #1e293b; // Dark text (light mode)
+$nav-text-dark: #e2e8f0; // Light text (dark mode)
+
+// Dynamic variables
+:root {
+  --bg: #{$light-bg};
+  --text: #{$light-text};
+  --card: #{$light-card};
+  --nav: #{$light-nav};
+  --logo-color: #{$logo-light};
+  --nav-text: #{$nav-text-light};
+}

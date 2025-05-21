@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +22,7 @@ const Header = () => {
           <Link to="#about">About</Link>
           <Link to="#contact">Contact</Link>
         </div>
+        <ThemeToggle />
 
         {/* Mobile Hamburger Button */}
         <button

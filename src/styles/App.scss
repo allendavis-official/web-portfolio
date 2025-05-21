@@ -9,26 +9,55 @@
 }
 
 .hero {
-  text-align: center;
-  padding: 4rem 0;
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
+  padding: 0 2rem;
+  gap: 4rem;
 
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+  &-content {
+    flex: 1;
   }
 
-  .cta-button {
-    display: inline-block;
-    background: $primary;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    margin-top: 1rem;
-    transition: transform 0.2s;
+  &-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
 
-    &:hover {
-      transform: translateY(-2px);
+    .greeting {
+      display: block;
+      color: var(--text);
+      opacity: 0.8;
+      font-weight: 400;
     }
+
+    .name {
+      color: var(--logo-color);
+      font-weight: 700;
+    }
+  }
+
+  &-subtitle {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+
+    .highlight {
+      color: var(--logo-color);
+      font-weight: 600;
+    }
+  }
+
+  &-cta {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    /* Add your visual element here */
   }
 }
 
@@ -211,5 +240,178 @@ body {
     width: 20px;
     height: 20px;
     fill: var(--text);
+  }
+}
+
+.tech-icons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.tech-icon {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s;
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: $tablet) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 4rem;
+
+    &-cta {
+      justify-content: center;
+    }
+
+    &-visual {
+      margin-top: 3rem;
+    }
+  }
+}
+
+.typewriter-container {
+  min-height: 80px; // Prevents layout shift
+  margin-bottom: 1.5rem;
+  text-align: left;
+
+  .typewriter-text {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .typewriter-cursor {
+    color: var(--logo-color);
+    font-weight: 700;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .typewriter-container {
+    min-height: 60px;
+
+    .typewriter-text {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.cta-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+  border: none;
+
+  .text {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s;
+  }
+
+  .icon {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s, opacity 0.2s;
+  }
+
+  /* Primary Button */
+  &.primary {
+    background: var(--logo-color);
+    color: white;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, var(--logo-color), #4f46e5);
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    animation: pulse 2s infinite;
+
+    @keyframes pulse {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  }
+
+  /* Secondary Button */
+  &.secondary {
+    background: transparent;
+    color: var(--text);
+    border: 2px solid var(--logo-color);
+
+    .icon {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+  }
+
+  /* Hover Effects */
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+    .text {
+      transform: translateX(-3px);
+    }
+
+    .icon {
+      transform: translateX(3px);
+    }
+
+    &.primary {
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &.secondary {
+      .icon {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  /* Active State */
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 }

@@ -34,3 +34,27 @@ $nav-text-dark: #e2e8f0; // Light text (dark mode)
   --logo-color: #{$logo-light};
   --nav-text: #{$nav-text-light};
 }
+
+// Add these to your existing variables
+$bg-alt: lighten($light-bg, 2%);
+$dark-bg-alt: darken($dark-bg, 2%);
+$tag-bg-light: #e2e8f0;
+$tag-text-light: #1e293b;
+$tag-bg-dark: #2d3748;
+$tag-text-dark: #e2e8f0;
+
+:root {
+  --bg-alt: #{$bg-alt};
+  --heading-color: #{$dark};
+  --tag-bg: #{$tag-bg-light};
+  --tag-text: #{$tag-text-light};
+  --border-color: #{rgba($dark, 0.1)};
+}
+
+[data-theme="dark"] {
+  --bg-alt: #{$dark-bg-alt};
+  --heading-color: #{$light};
+  --tag-bg: #{$tag-bg-dark};
+  --tag-text: #{$tag-text-dark};
+  --border-color: #{rgba($light, 0.1)};
+}
